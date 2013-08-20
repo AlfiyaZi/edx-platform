@@ -8,12 +8,16 @@ Feature: Course Settings
     And I press the "Save" notification button
     Then I see the set dates on refresh
 
+    # IE has trouble with saving information
+    @skip_internetexplorer
   Scenario: User can clear previously set course dates (except start date)
     Given I have set course dates
     And I clear all the dates except start
     And I press the "Save" notification button
     Then I see cleared dates on refresh
 
+    # IE has trouble with saving information
+    @skip_internetexplorer
   Scenario: User cannot clear the course start date
     Given I have set course dates
     And I press the "Save" notification button
@@ -21,6 +25,8 @@ Feature: Course Settings
     Then I receive a warning about course start date
     And The previously set start date is shown on refresh
 
+    # IE has trouble with saving information
+    @skip_internetexplorer
   Scenario: User can correct the course start date warning
     Given I have tried to clear the course start
     And I have entered a new course start date

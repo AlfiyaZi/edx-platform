@@ -25,6 +25,8 @@ Feature: Problem Editor
     Then I can revert the display name to unset
     And my display name is unset on save
 
+  # IE will not click the revert button properly
+  @skip_internetexplorer
   Scenario: User can select values in a Select
     Given I have created a Blank Common Problem
     When I edit and select Settings
@@ -67,6 +69,8 @@ Feature: Problem Editor
     Then Edit High Level Source is visible
 
   # This feature will work in Firefox only when Firefox is the active window
+  # IE will not interact with the high level source in sauce labs
+  @skip_internetexplorer
   Scenario: High Level source is persisted for LaTeX problem (bug STUD-280)
     Given I have created a LaTeX Problem
     When I edit and compile the High Level Source
